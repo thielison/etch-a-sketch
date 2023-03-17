@@ -4,12 +4,33 @@
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#body-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7em;
+}
+
+#options-box {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  height: 600px;
+  background-color: rgb(139, 84, 221);
+}
+
 #container {
   display: flex;
   flex-wrap: wrap;
-  width: 768px;
-  height: 768px;
-  margin: auto;
+  width: 700px;
+  height: 700px;
   border: 5px solid red;
 }
 

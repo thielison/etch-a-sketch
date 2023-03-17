@@ -20,5 +20,3 @@ function makeRows(rows, cols) {
 function setDivHoverColor(e) {
     e.target.className += " hover";
 }
-
-console.log(flexItems);
