@@ -18,12 +18,28 @@ function setDivHoverColor(e) {
     e.target.className += " hover";
 }
 
-rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
-rangeInput.addEventListener("input", (e) => {
-    rangeOutput.textContent = e.target.value + " x " + e.target.value;
-});
+function updateCellsSize() {
+    container.innerHTML = ""; // remove existing cells
+    const cellSize = rangeInput.value;
+    rangeOutput.textContent = cellSize + " x " + cellSize;
 
-makeRows(16, 16);
+    makeRows(cellSize, cellSize);
+
+    flexItems.forEach((item) => {
+        item.style.width = `calc(100% / ${cellSize})`;
+        item.style.height = `calc(100% / ${cellSize})`;
+
+        flexItems.forEach((item) => {
+            item.addEventListener("mouseenter", setDivHoverColor);
+        });
+    });
+}
+
+rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
+
+rangeInput.addEventListener("input", updateCellsSize);
+
+makeRows(16, 16); // Initialize grid with 16 x 16 size
 
 flexItems.forEach((item) => {
     item.addEventListener("mouseenter", setDivHoverColor);
