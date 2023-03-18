@@ -21,7 +21,6 @@ function setDivHoverColor(e) {
 function updateCellsSize() {
     container.innerHTML = ""; // remove existing cells
     const cellSize = rangeInput.value;
-    rangeOutput.textContent = cellSize + " x " + cellSize;
 
     makeRows(cellSize, cellSize);
 
@@ -35,9 +34,14 @@ function updateCellsSize() {
     });
 }
 
+function updateGridSizeText() {
+    rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
+}
+
 rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 
-rangeInput.addEventListener("input", updateCellsSize);
+rangeInput.addEventListener("input", updateGridSizeText);
+rangeInput.addEventListener("change", updateCellsSize);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
 
