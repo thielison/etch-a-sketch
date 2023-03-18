@@ -12,6 +12,10 @@ function makeRows(rows, cols) {
     }
 
     flexItems = document.querySelectorAll(".flex-item");
+
+    flexItems.forEach((item) => {
+        item.addEventListener("mouseenter", setDivHoverColor);
+    });
 }
 
 function setDivHoverColor(e) {
@@ -27,10 +31,6 @@ function updateCellsSize() {
     flexItems.forEach((item) => {
         item.style.width = `calc(100% / ${cellSize})`;
         item.style.height = `calc(100% / ${cellSize})`;
-
-        flexItems.forEach((item) => {
-            item.addEventListener("mouseenter", setDivHoverColor);
-        });
     });
 }
 
@@ -44,7 +44,3 @@ rangeInput.addEventListener("input", updateGridSizeText);
 rangeInput.addEventListener("change", updateCellsSize);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
-
-flexItems.forEach((item) => {
-    item.addEventListener("mouseenter", setDivHoverColor);
-});
