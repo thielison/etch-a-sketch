@@ -1,6 +1,7 @@
 const container = document.getElementById("container");
 const rangeOutput = document.getElementById("range-output");
 const rangeInput = document.getElementById("range-input");
+const rainbowModeButton = document.getElementById("rainbow-mode-button");
 
 let flexItems;
 
@@ -13,13 +14,28 @@ function makeRows(rows, cols) {
 
     flexItems = document.querySelectorAll(".flex-item");
 
+    setDivHoverColor();
+}
+
+function setDivHoverColor() {
     flexItems.forEach((item) => {
-        item.addEventListener("mouseenter", setDivHoverColor);
+        item.addEventListener("mouseenter", (e) => {
+            e.target.className += " hover";
+        });
     });
 }
 
-function setDivHoverColor(e) {
-    e.target.className += " hover";
+function setRandomDivHoverColor() {
+    flexItems.forEach((item) => {
+        item.addEventListener("mouseenter", (e) => {
+            const r = Math.round(Math.random() * 256);
+            const g = Math.round(Math.random() * 256);
+            const b = Math.round(Math.random() * 256);
+            const rgb = `rgb(${r},${g},${b})`;
+
+            e.target.style.backgroundColor = rgb;
+        });
+    });
 }
 
 function updateCellsSize() {
@@ -42,5 +58,7 @@ rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 
 rangeInput.addEventListener("input", updateGridSizeText);
 rangeInput.addEventListener("change", updateCellsSize);
+
+rainbowModeButton.addEventListener("click", setRandomDivHoverColor);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
