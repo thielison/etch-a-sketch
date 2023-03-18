@@ -21,6 +21,8 @@ h1 {
 #options-box {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 350px;
   height: 600px;
   background-color: rgb(139, 84, 221);

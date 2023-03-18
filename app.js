@@ -1,11 +1,8 @@
 const container = document.getElementById("container");
+const rangeOutput = document.getElementById("range-output");
+const rangeInput = document.getElementById("range-input");
+
 let flexItems;
-
-makeRows(16, 16);
-
-flexItems.forEach((item) => {
-    item.addEventListener("mouseenter", setDivHoverColor);
-});
 
 function makeRows(rows, cols) {
     for (let i = 0; i < rows * cols; i++) {
@@ -20,3 +17,14 @@ function makeRows(rows, cols) {
 function setDivHoverColor(e) {
     e.target.className += " hover";
 }
+
+rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
+rangeInput.addEventListener("input", (e) => {
+    rangeOutput.textContent = e.target.value + " x " + e.target.value;
+});
+
+makeRows(16, 16);
+
+flexItems.forEach((item) => {
+    item.addEventListener("mouseenter", setDivHoverColor);
+});
