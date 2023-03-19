@@ -33,10 +33,9 @@ p, button {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
   width: 200px;
   height: 600px;
-  background-color: rgb(214, 214, 214);
 }
 
 button {
@@ -47,7 +46,7 @@ button {
   border-radius: 0.5em;
 }
 
-#rainbow-mode-button:focus {
+#rainbow-mode-button:focus, #color-mode-button:focus {
   color: #fff;
   background-color: #333;
 }
@@ -55,18 +54,39 @@ button {
 #toggle-grid-lines-button:active {
   color: #fff;
   background-color: #333;
-} 
+}
 
-#color-picker-container {
+#color-picker-container, #grid-size-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
   border: 1px solid #333;
   width: 100%;
   border-radius: 0.5em;
-  padding: 10px;
+  padding: 15px;
+}
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #bebebe;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  margin-top: -5px;
 }
 
 #color-picker {
