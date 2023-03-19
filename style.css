@@ -37,7 +37,6 @@ h1 {
 }
 
 .flex-item {
-  border: 1px solid #000000;
   width: calc(100% / 16);
   height: calc(100% / 16);
 }

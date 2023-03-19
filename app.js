@@ -2,6 +2,7 @@ const container = document.getElementById("container");
 const rangeOutput = document.getElementById("range-output");
 const rangeInput = document.getElementById("range-input");
 const rainbowModeButton = document.getElementById("rainbow-mode-button");
+const toggleGridLinesButton = document.getElementById("toggle-grid-lines-button");
 
 let flexItems;
 
@@ -45,6 +46,7 @@ function updateCellsSize() {
     makeRows(cellSize, cellSize);
 
     flexItems.forEach((item) => {
+        item.style.border = "1px solid #000000";
         item.style.width = `calc(100% / ${cellSize})`;
         item.style.height = `calc(100% / ${cellSize})`;
     });
@@ -54,11 +56,23 @@ function updateGridSizeText() {
     rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 }
 
+function toggleGridLines() {
+    flexItems.forEach((item) => {
+        if (item.style.border == "") {
+            item.style.border = "1px solid #000000";
+        } else {
+            item.style.border = "";
+        }
+    });
+}
+
 rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 
 rangeInput.addEventListener("input", updateGridSizeText);
 rangeInput.addEventListener("change", updateCellsSize);
 
 rainbowModeButton.addEventListener("click", setRandomDivHoverColor);
+
+toggleGridLinesButton.addEventListener("click", toggleGridLines);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
