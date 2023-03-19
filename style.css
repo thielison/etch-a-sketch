@@ -34,16 +34,17 @@ p, button {
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  width: 350px;
+  width: 200px;
   height: 600px;
   background-color: rgb(214, 214, 214);
 }
 
-#toggle-grid-lines-button, #rainbow-mode-button {
-  padding: 10px 30px 10px 30px;
+button {
+  background-color: transparent;
+  width: 100%;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #333;
   border-radius: 0.5em;
-  background-color: transparent;
 }
 
 #rainbow-mode-button:focus {
@@ -55,6 +56,19 @@ p, button {
   color: #fff;
   background-color: #333;
 } 
+
+#color-picker {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+input[type="color"] {
+  width: 200%;
+  height: 200%;
+  transform: translate(-25%, -25%);
+}
 
 #container {
   display: flex;
