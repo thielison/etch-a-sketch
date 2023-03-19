@@ -4,9 +4,9 @@ const rangeInput = document.getElementById("range-input");
 const rainbowModeButton = document.getElementById("rainbow-mode-button");
 const toggleGridLinesButton = document.getElementById("toggle-grid-lines-button");
 const colorPicker = document.getElementById("colorpicker");
+const colorModeButton = document.getElementById("color-mode-button");
 
 let flexItems;
-
 function makeRows(rows, cols) {
     for (let i = 0; i < rows * cols; i++) {
         let cell = document.createElement("div");
@@ -67,16 +67,18 @@ function toggleGridLines() {
     });
 }
 
+let userSelectedColor;
 function watchColorPicker(e) {
-    let selectedColor = e.target.value;
+    userSelectedColor = e.target.value;
+}
+
+function activateSingleColorMode() {
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
-            e.target.style.backgroundColor = selectedColor;
+            e.target.style.backgroundColor = userSelectedColor;
         });
     });
 }
-
-function changeDivHoverColor() {}
 
 rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 
@@ -88,5 +90,6 @@ rainbowModeButton.addEventListener("click", setRandomDivHoverColor);
 toggleGridLinesButton.addEventListener("click", toggleGridLines);
 
 colorPicker.addEventListener("change", watchColorPicker);
+colorModeButton.addEventListener("click", activateSingleColorMode);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size

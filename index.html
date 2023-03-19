@@ -17,8 +17,11 @@
         <h1>Etch-A-Sketch</h1>
         <div id="body-content">
             <div id="options-box">
-                <label for="colorpicker">Color Picker:</label>
-                <div id="color-picker"><input type="color" id="colorpicker" value="#fff" /></div>
+                <div id="color-picker-container">
+                    <label for="colorpicker">Color Picker:</label>
+                    <div id="color-picker"><input type="color" id="colorpicker" value="#fff" /></div>
+                </div>
+                <button id="color-mode-button">Color Mode</button>
                 <button id="rainbow-mode-button">Rainbow Mode</button>
                 <button id="toggle-grid-lines-button">Toggle Grid Lines</button>
                 <p>Grid size: <output id="range-output"></output></p>

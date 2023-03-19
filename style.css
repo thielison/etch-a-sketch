@@ -42,7 +42,7 @@ p, button {
 button {
   background-color: transparent;
   width: 100%;
-  padding: 10px 20px 10px 20px;
+  padding: 10px;
   border: 1px solid #333;
   border-radius: 0.5em;
 }
@@ -56,6 +56,18 @@ button {
   color: #fff;
   background-color: #333;
 } 
+
+#color-picker-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #333;
+  width: 100%;
+  border-radius: 0.5em;
+  padding: 10px;
+}
 
 #color-picker {
   width: 80px;
