@@ -7,6 +7,8 @@ const colorPicker = document.getElementById("colorpicker");
 const colorModeButton = document.getElementById("color-mode-button");
 
 let flexItems;
+let userSelectedColor;
+
 function makeRows(rows, cols) {
     for (let i = 0; i < rows * cols; i++) {
         let cell = document.createElement("div");
@@ -20,9 +22,10 @@ function makeRows(rows, cols) {
 }
 
 function setDivHoverColor() {
+    userSelectedColor = "#000";
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
-            e.target.className += " hover";
+            e.target.style.backgroundColor = userSelectedColor;
         });
     });
 }
@@ -67,7 +70,6 @@ function toggleGridLines() {
     });
 }
 
-let userSelectedColor;
 function watchColorPicker(e) {
     userSelectedColor = e.target.value;
 }

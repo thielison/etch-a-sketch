@@ -114,7 +114,3 @@ input[type="color"] {
   width: calc(100% / 16);
   height: calc(100% / 16);
 }
-
-.hover {
-  background-color: #000000;
-}
