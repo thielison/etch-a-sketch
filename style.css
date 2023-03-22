@@ -47,7 +47,8 @@ button {
   background-color: transparent;
 }
 
-button#toggle-grid-lines-button:active {
+button#toggle-grid-lines-button:active,
+button#clear-board:active {
   color: #ffffff;
   background: #333;
 }

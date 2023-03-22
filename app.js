@@ -5,6 +5,7 @@ const rainbowModeButton = document.getElementById("rainbow-mode-button");
 const toggleGridLinesButton = document.getElementById("toggle-grid-lines-button");
 const colorPicker = document.getElementById("colorpicker");
 const colorModeButton = document.getElementById("color-mode-button");
+const clearBoardButton = document.getElementById("clear-board");
 const buttons = document.getElementsByTagName("button");
 
 let flexItems;
@@ -97,6 +98,12 @@ function toggleButtonSelectedClass(buttons, clickedButton) {
     clickedButton.className = "isSelected";
 }
 
+function clearBoard() {
+    flexItems.forEach((item) => {
+        item.style.backgroundColor = "";
+    });
+}
+
 rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 
 rangeInput.addEventListener("input", updateGridSizeText);
@@ -108,5 +115,7 @@ toggleGridLinesButton.addEventListener("click", toggleGridLines);
 
 colorPicker.addEventListener("change", watchColorPicker);
 colorModeButton.addEventListener("click", activateSingleColorMode);
+
+clearBoardButton.addEventListener("click", clearBoard);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
