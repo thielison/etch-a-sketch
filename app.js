@@ -6,6 +6,7 @@ const toggleGridLinesButton = document.getElementById("toggle-grid-lines-button"
 const colorPicker = document.getElementById("colorpicker");
 const colorModeButton = document.getElementById("color-mode-button");
 const clearBoardButton = document.getElementById("clear-board");
+const eraserButton = document.getElementById("eraser");
 const buttons = document.getElementsByTagName("button");
 
 let flexItems;
@@ -90,7 +91,7 @@ function activateSingleColorMode() {
 }
 
 function toggleButtonSelectedClass(buttons, clickedButton) {
-    // If button is clicked, add CSS class isSelected
+    // If button is clicked, add the CSS class "isSelected"
     for (let btn of buttons) {
         btn.classList.remove("isSelected");
     }
@@ -101,6 +102,16 @@ function toggleButtonSelectedClass(buttons, clickedButton) {
 function clearBoard() {
     flexItems.forEach((item) => {
         item.style.backgroundColor = "";
+    });
+}
+
+function enableEraserMode() {
+    toggleButtonSelectedClass(buttons, this);
+
+    flexItems.forEach((item) => {
+        item.addEventListener("mouseenter", (e) => {
+            e.target.style.backgroundColor = "";
+        });
     });
 }
 
@@ -117,5 +128,7 @@ colorPicker.addEventListener("change", watchColorPicker);
 colorModeButton.addEventListener("click", activateSingleColorMode);
 
 clearBoardButton.addEventListener("click", clearBoard);
+
+eraserButton.addEventListener("click", enableEraserMode);
 
 makeRows(16, 16); // Initialize grid with 16 x 16 size
