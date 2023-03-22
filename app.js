@@ -5,6 +5,7 @@ const rainbowModeButton = document.getElementById("rainbow-mode-button");
 const toggleGridLinesButton = document.getElementById("toggle-grid-lines-button");
 const colorPicker = document.getElementById("colorpicker");
 const colorModeButton = document.getElementById("color-mode-button");
+const buttons = document.getElementsByTagName("button");
 
 let flexItems;
 let userSelectedColor;
@@ -17,11 +18,12 @@ function makeRows(rows, cols) {
     }
 
     flexItems = document.querySelectorAll(".flex-item");
-
     setDivHoverColor();
 }
 
 function setDivHoverColor() {
+    toggleButtonSelectedClass(buttons, buttons[0]); // Color Mode button initialize selected
+
     userSelectedColor = "#000";
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
@@ -31,6 +33,8 @@ function setDivHoverColor() {
 }
 
 function setRandomDivHoverColor() {
+    toggleButtonSelectedClass(buttons, this);
+
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
             const r = Math.round(Math.random() * 256);
@@ -75,11 +79,22 @@ function watchColorPicker(e) {
 }
 
 function activateSingleColorMode() {
+    toggleButtonSelectedClass(buttons, this);
+
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
             e.target.style.backgroundColor = userSelectedColor;
         });
     });
+}
+
+function toggleButtonSelectedClass(buttons, clickedButton) {
+    // If button is clicked, add CSS class isSelected
+    for (let btn of buttons) {
+        btn.classList.remove("isSelected");
+    }
+
+    clickedButton.className = "isSelected";
 }
 
 rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;

@@ -39,23 +39,17 @@ button {
   height: 600px;
 }
 
-#options-box button {
-  background-color: transparent;
+button {
   width: 100%;
   padding: 10px;
   border: 1px solid #333;
   border-radius: 0.5em;
+  background-color: transparent;
 }
 
-#rainbow-mode-button:focus, 
-#color-mode-button:focus {
-  color: #fff;
-  background-color: #333;
-}
-
-#toggle-grid-lines-button:active {
-  color: #fff;
-  background-color: #333;
+button#toggle-grid-lines-button:active {
+  color: #ffffff;
+  background: #333;
 }
 
 #color-picker-container, 
@@ -118,4 +112,9 @@ input[type="color"] {
 .flex-item {
   width: calc(100% / 16);
   height: calc(100% / 16);
+}
+
+.isSelected {
+  color: #ffffff;
+  background-color: #333;
 }
