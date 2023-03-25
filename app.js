@@ -7,6 +7,7 @@ const colorPicker = document.getElementById("colorpicker");
 const colorModeButton = document.getElementById("color-mode-button");
 const clearBoardButton = document.getElementById("clear-board");
 const eraserButton = document.getElementById("eraser");
+const shadingModeButton = document.getElementById("shading-mode-button");
 const buttons = document.getElementsByTagName("button");
 
 let flexItems;
@@ -45,6 +46,23 @@ function setRandomDivHoverColor() {
             const rgb = `rgb(${r},${g},${b})`;
 
             e.target.style.backgroundColor = rgb;
+        });
+    });
+}
+
+function activateShadingMode() {
+    toggleButtonSelectedClass(buttons, this);
+
+    flexItems.forEach((item) => {
+        item.addEventListener("mouseenter", (e) => {
+            if (!e.target.style.opacity) {
+                // if the specific item doesn't have opacity
+                e.target.style.opacity = 0.1;
+            } else if (Number(e.target.style.opacity) < 1) {
+                e.target.style.opacity = Number(e.target.style.opacity) + 0.05;
+            } else {
+                e.target.style.opacity = 1;
+            }
         });
     });
 }
@@ -126,6 +144,8 @@ toggleGridLinesButton.addEventListener("click", toggleGridLines);
 
 colorPicker.addEventListener("change", watchColorPicker);
 colorModeButton.addEventListener("click", activateSingleColorMode);
+
+shadingModeButton.addEventListener("click", activateShadingMode);
 
 clearBoardButton.addEventListener("click", clearBoard);
 
