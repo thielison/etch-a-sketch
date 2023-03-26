@@ -11,7 +11,7 @@ const shadingModeButton = document.getElementById("shading-mode-button");
 const buttons = document.getElementsByTagName("button");
 
 let flexItems;
-let userSelectedColor;
+let userSelectedColor = "#000";
 
 function makeRows(rows, cols) {
     for (let i = 0; i < rows * cols; i++) {
@@ -21,18 +21,7 @@ function makeRows(rows, cols) {
     }
 
     flexItems = document.querySelectorAll(".flex-item");
-    setDivHoverColor();
-}
-
-function setDivHoverColor() {
-    toggleButtonSelectedClass(buttons, buttons[0]); // Color Mode button initialize selected
-
-    userSelectedColor = "#000";
-    flexItems.forEach((item) => {
-        item.addEventListener("mouseenter", (e) => {
-            e.target.style.backgroundColor = userSelectedColor;
-        });
-    });
+    activateSingleColorMode();
 }
 
 function setRandomDivHoverColor() {
@@ -63,6 +52,8 @@ function activateShadingMode() {
             } else {
                 e.target.style.opacity = 1;
             }
+
+            e.target.style.backgroundColor = userSelectedColor;
         });
     });
 }
@@ -99,7 +90,7 @@ function watchColorPicker(e) {
 }
 
 function activateSingleColorMode() {
-    toggleButtonSelectedClass(buttons, this);
+    toggleButtonSelectedClass(buttons, buttons[0]); // Color Mode button initialize selected
 
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
