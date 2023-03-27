@@ -12,6 +12,7 @@ const buttons = document.getElementsByTagName("button");
 
 let flexItems;
 let userSelectedColor = "#000";
+let shadingModeActivated = false;
 
 function makeRows(rows, cols) {
     for (let i = 0; i < rows * cols; i++) {
@@ -24,8 +25,20 @@ function makeRows(rows, cols) {
     activateSingleColorMode();
 }
 
-function setRandomDivHoverColor() {
+function activateSingleColorMode() {
+    toggleButtonSelectedClass(buttons, buttons[0]); // Color Mode button initialize selected
+    shadingModeActivated = false;
+
+    flexItems.forEach((item) => {
+        item.addEventListener("mouseenter", (e) => {
+            e.target.style.backgroundColor = userSelectedColor;
+        });
+    });
+}
+
+function activateRandomDivHoverColor() {
     toggleButtonSelectedClass(buttons, this);
+    shadingModeActivated = false;
 
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
@@ -40,20 +53,26 @@ function setRandomDivHoverColor() {
 }
 
 function activateShadingMode() {
+    shadingModeActivated = !shadingModeActivated;
+
     toggleButtonSelectedClass(buttons, this);
 
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
-            if (!e.target.style.opacity) {
-                // if the specific item doesn't have opacity
-                e.target.style.opacity = 0.1;
-            } else if (Number(e.target.style.opacity) < 1) {
-                e.target.style.opacity = Number(e.target.style.opacity) + 0.05;
+            if (shadingModeActivated) {
+                if (!e.target.style.opacity) {
+                    // if the specific item doesn't have opacity
+                    e.target.style.opacity = 0.1;
+                } else if (Number(e.target.style.opacity) < 1) {
+                    e.target.style.opacity = Number(e.target.style.opacity) + 0.05;
+                } else {
+                    e.target.style.opacity = 1;
+                }
+
+                e.target.style.backgroundColor = userSelectedColor;
             } else {
                 e.target.style.opacity = 1;
             }
-
-            e.target.style.backgroundColor = userSelectedColor;
         });
     });
 }
@@ -61,7 +80,6 @@ function activateShadingMode() {
 function updateCellsSize() {
     container.innerHTML = ""; // remove existing cells
     const cellSize = rangeInput.value;
-
     makeRows(cellSize, cellSize);
 
     flexItems.forEach((item) => {
@@ -89,16 +107,6 @@ function watchColorPicker(e) {
     userSelectedColor = e.target.value;
 }
 
-function activateSingleColorMode() {
-    toggleButtonSelectedClass(buttons, buttons[0]); // Color Mode button initialize selected
-
-    flexItems.forEach((item) => {
-        item.addEventListener("mouseenter", (e) => {
-            e.target.style.backgroundColor = userSelectedColor;
-        });
-    });
-}
-
 function toggleButtonSelectedClass(buttons, clickedButton) {
     // If button is clicked, add the CSS class "isSelected"
     for (let btn of buttons) {
@@ -111,6 +119,7 @@ function toggleButtonSelectedClass(buttons, clickedButton) {
 function clearBoard() {
     flexItems.forEach((item) => {
         item.style.backgroundColor = "";
+        item.style.opacity = "";
     });
 }
 
@@ -120,6 +129,7 @@ function enableEraserMode() {
     flexItems.forEach((item) => {
         item.addEventListener("mouseenter", (e) => {
             e.target.style.backgroundColor = "";
+            e.target.style.opacity = "";
         });
     });
 }
@@ -129,7 +139,7 @@ rangeOutput.textContent = rangeInput.value + " x " + rangeInput.value;
 rangeInput.addEventListener("input", updateGridSizeText);
 rangeInput.addEventListener("change", updateCellsSize);
 
-rainbowModeButton.addEventListener("click", setRandomDivHoverColor);
+rainbowModeButton.addEventListener("click", activateRandomDivHoverColor);
 
 toggleGridLinesButton.addEventListener("click", toggleGridLines);
 
