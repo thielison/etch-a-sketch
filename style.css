@@ -1,116 +1,143 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 h1 {
-  color: #333;
-  font-size: 60px;
-  text-align: center;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+    color: #333;
+    font-size: 60px;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-p, button {
-  font-size: 1em;
+p,
+button {
+    font-size: 1em;
 }
 
 #body-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 7em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7em;
 }
 
 #options-box {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  width: 200px;
-  height: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 200px;
+    height: 600px;
 }
 
 button {
-  background-color: transparent;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #333;
-  border-radius: 0.5em;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 0.5em;
+    transition: 0.4s;
 }
 
-#rainbow-mode-button:focus, #color-mode-button:focus {
-  color: #fff;
-  background-color: #333;
+button:hover {
+    cursor: pointer;
 }
 
-#toggle-grid-lines-button:active {
-  color: #fff;
-  background-color: #333;
+/* #rainbow-mode-button:focus,
+#color-mode-button:focus {
+    color: #fff;s
+    background-color: #333;
+} */
+
+.isActive {
+    color: #fff;
+    background-color: #333;
 }
 
-#color-picker-container, #grid-size-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  border: 1px solid #333;
-  width: 100%;
-  border-radius: 0.5em;
-  padding: 15px;
+.isActive-rainbow {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
-input[type=range]{
-  -webkit-appearance: none;
+/* #toggle-grid-lines-button:active {
+    color: #fff;
+    background-color: #333;
+} */
+
+#color-picker-container,
+#grid-size-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #333;
+    width: 100%;
+    border-radius: 0.5em;
+    padding: 15px;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-  width: 300px;
-  height: 5px;
-  background: #bebebe;
-  border: none;
-  border-radius: 3px;
+.inactive-grid {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: rgb(0, 0, 0);
-  margin-top: -5px;
+input[type="range"] {
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #bebebe;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: rgb(0, 0, 0);
+    margin-top: -5px;
 }
 
 #color-picker {
-  width: 80px;
-  height: 80px;
-  border-radius: 50px;
-  overflow: hidden;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 input[type="color"] {
-  width: 200%;
-  height: 200%;
-  transform: translate(-25%, -25%);
+    width: 200%;
+    height: 200%;
+    transform: translate(-25%, -25%);
 }
 
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 700px;
-  height: 700px;
-  box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.57);
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 700px;
+    box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.57);
+}
+
+#container:hover {
+    cursor: crosshair;
 }
 
 .flex-item {
-  width: calc(100% / 16);
-  height: calc(100% / 16);
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+    transition: 0.3s;
 }
